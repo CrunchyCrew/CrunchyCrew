@@ -9,17 +9,14 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// مفتاح secret الخاص بـ Google reCAPTCHA (حط المفتاح متاعك هنا)
 const RECAPTCHA_SECRET_KEY = "6LcmVEgrAAAAACZdGlIQhkqfOyTrgzcGz0hl6MYg";
 
-// مثال حسابات fake (استبدلهم بقاعدة بيانات أو API حقيقية)
 const accounts = [
   "user1@crunchy.com : pass123",
   "user2@crunchy.com : pass456",
   "user3@crunchy.com : pass789"
 ];
 
-// POST route لفحص reCAPTCHA و إعطاء حساب
 app.post("/get-account", async (req, res) => {
   const token = req.body.token;
 
@@ -28,14 +25,11 @@ app.post("/get-account", async (req, res) => {
   }
 
   try {
-    // تحقق من token مع Google
     const response = await axios.post(
       `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${token}`
     );
 
     if (response.data.success) {
-      // هنا يمكنك إضافة تحقق إضافي مثل الحد من الحسابات لكل IP
-      // اختر حساب عشوائي من القائمة
       const account = accounts[Math.floor(Math.random() * accounts.length)];
       res.json({ account });
     } else {
