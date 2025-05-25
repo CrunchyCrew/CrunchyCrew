@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CrunchyCrew</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="https://cdn.brandfetch.io/id0XKwSDEq/w/800/h/152/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B" alt="Crunchyroll Logo" class="logo" />
+      <h1>Get Your Free Crunchyroll Account</h1>
+    </div>
+    <p class="subtitle">.Claim one account after completing the required steps. Only 1 account per user</p>
+  </header>
+
+  <div class="container">
+    <form id="captchaForm" action="javascript:void(0);">
+      <button 
+        id="getAccountBtn"
+        class="g-recaptcha" 
+        data-sitekey="6LcmVEgrAAAAABXqHEhRwLPbq4q0Vxqijp6JNTmd" 
+        data-callback="onSubmit"
+        data-badge="bottomright">
+        Get Account
+      </button>
+    </form>
+
+    <div id="result" class="result-box"></div>
+
+    <div class="support">
+      <p>?Having issues</p>
+      <a href="https://discord.gg/X6u56Skqyt" target="_blank" id="supportBtn">Open a Support Ticket</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
